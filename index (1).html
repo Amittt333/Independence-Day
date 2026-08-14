@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>India @ 80 — Happy Independence Day 2026 🇮🇳</title>
+  <meta name="description" content="Celebrate India's 80th Independence Day with an interactive digital experience celebrating India's journey, freedom heroes, achievements, and future." />
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="India @ 80 — Independence Day 2026 🇮🇳" />
+  <meta property="og:description" content="Celebrate 80 Years of Freedom, Innovation, and modern Indian identity. An Awwwards-level interactive experience." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1532375810709-75b1da00537c?q=80&w=1200" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#030712" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rozha+One&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Canvas Confetti for Grand Finale -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            saffron: {
+              DEFAULT: '#FF671F',
+              light: '#FF9933',
+              glow: '#ff773340'
+            },
+            ashoka: {
+              DEFAULT: '#06038D',
+              deep: '#03004d',
+              glow: '#06038d66'
+            },
+            greenState: {
+              DEFAULT: '#046A38',
+              light: '#138808',
+              glow: '#13880840'
+            },
+            luxury: {
+              dark: '#05070E',
+              card: 'rgba(13, 18, 30, 0.75)',
+              border: 'rgba(255, 255, 255, 0.08)'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Cinzel"', 'serif'],
+            hindi: ['"Rozha One"', 'serif'],
+            mono: ['"Space Grotesk"', 'monospace']
+          },
+          animation: {
+            'spin-slow': 'spin 30s linear infinite',
+            'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'radar': 'radar 2s ease-out infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            radar: {
+              '0%': { transform: 'scale(0.8)', opacity: '1' },
+              '100%': { transform: 'scale(2.4)', opacity: '0' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Luxury Glassmorphism & Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #05070e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #FF671F, #FFFFFF, #046A38);
+      border-radius: 9999px;
+    }
+
+    body {
+      background-color: #05070E;
+      color: #F3F4F6;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* Custom Cursor (Desktop Only) */
+    @media (pointer: fine) {
+      .custom-cursor-dot, .custom-cursor-ring {
+        pointer-events: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.2s, transform 0.15s ease-out;
+      }
+      .custom-cursor-dot {
+        width: 8px;
+        height: 8px;
+        background: #FF9933;
+      }
+      .custom-cursor-ring {
+        width: 36px;
+        height: 36px;
+        border: 1.5px solid rgba(255, 153, 51, 0.5);
+        transition: width 0.2s, height 0.2s, border-color 0.2s, background-color 0.2s, transform 0.2s ease-out;
+      }
+      .cursor-hover .custom-cursor-ring {
+        width: 55px;
+        height: 55px;
+        border-color: #138808;
+        background-color: rgba(19, 136, 8, 0.1);
+      }
+    }
+
+    .glass-card {
+      background: rgba(12, 17, 29, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    }
+    .glass-card:hover {
+      border-color: rgba(255, 153, 51, 0.25);
+    }
+
+    .tricolor-gradient-text {
+      background: linear-gradient(135deg, #FF9933 0%, #FFFFFF 50%, #138808 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .saffron-glow {
+      box-shadow: 0 0 40px -10px rgba(255, 103, 31, 0.4);
+    }
+    .chakra-glow {
+      filter: drop-shadow(0 0 25px rgba(6, 3, 141, 0.6)) drop-shadow(0 0 45px rgba(59, 130, 246, 0.3));
+    }
+
+    /* Ambient Film Grain */
+    .bg-grain {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    /* Map Styling */
+    .state-interactive {
+      transition: all 0.25s ease-out;
+      cursor: pointer;
+    }
+    .state-interactive:hover {
+      filter: brightness(1.35) drop-shadow(0 0 10px rgba(255, 153, 51, 0.6));
+    }
+    .jharkhand-special {
+      filter: drop-shadow(0 0 15px rgba(255, 103, 31, 0.85));
+      animation: jharkhandPulse 2.5s infinite alternate ease-in-out;
+    }
+    @keyframes jharkhandPulse {
+      0% { fill: #ff671f; opacity: 0.85; }
+      100% { fill: #ff9933; opacity: 1; }
+    }
+  </style>
+</head>
+
+<body class="bg-luxury-dark text-slate-100 selection:bg-saffron selection:text-white relative bg-grain">
+
+  <!-- Custom Cursor Elements -->
+  <div id="cursor-dot" class="custom-cursor-dot hidden md:block"></div>
+  <div id="cursor-ring" class="custom-cursor-ring hidden md:block"></div>
+
+  <!-- PRELOADER -->
+  <div id="preloader" class="fixed inset-0 z-[100] bg-luxury-dark flex flex-col items-center justify-center transition-all duration-1000">
+    <div class="relative flex flex-col items-center">
+      <div class="relative w-28 h-28 mb-8">
+        <svg id="preloader-chakra" class="w-full h-full text-blue-500 animate-spin-slow" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 2"/>
+          <circle cx="50" cy="50" r="10" fill="none" stroke="#3b82f6" stroke-width="2"/>
+          <circle cx="50" cy="50" r="4" fill="#3b82f6"/>
+          <g id="preloader-spokes" stroke="#3b82f6" stroke-width="1.2"></g>
+        </svg>
+        <div class="absolute inset-0 rounded-full bg-blue-600/20 blur-xl"></div>
+      </div>
+
+      <div class="text-xs uppercase tracking-[0.4em] text-saffron-light font-mono mb-2">Independent India @ 80</div>
+      <h1 class="text-4xl md:text-5xl font-serif font-black tracking-wider text-white mb-6">INDIA <span class="text-saffron">80</span></h1>
+      
+      <div class="w-64 h-[2px] bg-white/10 rounded-full overflow-hidden relative">
+        <div id="preloader-bar" class="h-full w-0 bg-gradient-to-r from-saffron via-white to-greenState-light transition-all duration-300"></div>
+      </div>
+      <div id="preloader-percent" class="text-xs font-mono text-slate-400 mt-3">0%</div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header id="main-nav" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-4 px-6 md:px-12">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-saffron rounded-lg p-1">
+        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-saffron via-white to-greenState flex items-center justify-center p-[2px] shadow-lg group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#080d1a] rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-blue-400 animate-spin-slow" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="3"/>
+              <circle cx="50" cy="50" r="6" fill="currentColor"/>
+              <g stroke="currentColor" stroke-width="2">
+                <line x1="50" y1="50" x2="50" y2="6"/>
+                <line x1="50" y1="50" x2="50" y2="94"/>
+                <line x1="50" y1="50" x2="6" y2="50"/>
+                <line x1="50" y1="50" x2="94" y2="50"/>
+                <line x1="50" y1="50" x2="19" y2="19"/>
+                <line x1="50" y1="50" x2="81" y2="81"/>
+                <line x1="50" y1="50" x2="19" y2="81"/>
+                <line x1="50" y1="50" x2="81" y2="19"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <span class="font-serif font-black tracking-widest text-lg md:text-xl text-white">INDIA<span class="text-saffron ml-1">80</span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#hero" class="hover:text-saffron-light transition-colors">Home</a>
+        <a href="#timeline" class="hover:text-saffron-light transition-colors">Journey</a>
+        <a href="#stats" class="hover:text-saffron-light transition-colors">India @ 80</a>
+        <a href="#achievements" class="hover:text-saffron-light transition-colors">Progress</a>
+        <a href="#map-section" class="hover:text-saffron-light transition-colors font-semibold text-saffron-light">Map of India 🇮🇳</a>
+        <a href="#heroes" class="hover:text-saffron-light transition-colors">Heroes</a>
+        <a href="#tricolor-canvas" class="hover:text-saffron-light transition-colors">Tricolor Spirit</a>
+        <a href="#message-generator" class="hover:text-saffron-light transition-colors">Freedom Card</a>
+      </nav>
+
+      <!-- Right Action items -->
+      <div class="flex items-center gap-4">
+        <button id="sound-toggle" aria-label="Toggle Ambient Audio" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-saffron/40 text-xs font-mono text-slate-300 hover:text-white transition-all backdrop-blur-md">
+          <i data-lucide="volume-x" id="sound-icon" class="w-4 h-4 text-slate-400"></i>
+          <span id="sound-text" class="hidden sm:inline">Audio Off</span>
+        </button>
+
+        <button id="menu-btn" aria-label="Open Menu" class="lg:hidden p-2 text-slate-300 hover:text-white focus:outline-none">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-x-4 top-20 bg-luxury-dark/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-6 hidden flex-col gap-4 shadow-2xl z-50">
+      <a href="#hero" class="mobile-link text-lg font-medium text-slate-200 py-2 border-b border-white/5">Home</a>
+      <a href="#timeline" class="mobile-link text-lg font-medium text-slate-200 py-2 border-b border-white/5">Freedom Journey</a>
+      <a href="#stats" class="mobile-link text-lg font-medium text-slate-200 py-2 border-b border-white/5">India @ 80 Stats</a>
+      <a href="#achievements" class="mobile-link text-lg font-medium text-slate-200 py-2 border-b border-white/5">Achievements</a>
+      <a href="#map-section" class="mobile-link text-lg font-medium text-saffron-light py-2 border-b border-white/5">Interactive India Map (Jharkhand)</a>
+      <a href="#heroes" class="mobile-link text-lg font-medium text-slate-200 py-2 border-b border-white/5">Freedom Fighters</a>
+      <a href="#message-generator" class="mobile-link text-lg font-medium text-saffron py-2">Generate Freedom Card (Amit / Hazaribagh)</a>
+    </div>
+  </header>
+
+  <!-- 1. HERO SECTION -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-6 overflow-hidden">
+    <div class="absolute top-1/4 -left-48 w-96 h-96 bg-saffron/20 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute bottom-10 -right-48 w-96 h-96 bg-greenState/20 rounded-full blur-[140px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-blue-600/10 rounded-full blur-[160px] pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto text-center relative z-10 flex flex-col items-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-white/10 text-xs md:text-sm font-mono tracking-widest text-saffron-light uppercase mb-6 backdrop-blur-md shadow-inner">
+        <span class="w-2 h-2 rounded-full bg-saffron animate-pulse"></span>
+        15 AUGUST 2026 • 80TH INDEPENDENCE DAY
+      </div>
+
+      <div class="mb-4 overflow-hidden">
+        <h2 class="font-hindi text-3xl md:text-5xl lg:text-6xl text-saffron-light tracking-wide drop-shadow-lg opacity-95">
+          वन्दे मातरम् 🇮🇳
+        </h2>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-black tracking-tight leading-[1.08] mb-6">
+        Celebrating <span class="tricolor-gradient-text">80 Years</span><br />
+        <span class="text-white drop-shadow-md">of Independent India</span>
+      </h1>
+
+      <p class="max-w-2xl text-base md:text-xl text-slate-300 font-light leading-relaxed mb-10">
+        From the sacrifice of millions in 1947 to pioneering quantum frontiers, lunar landings, and global digital leadership in 2026. One billion voices, one sovereign spirit.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 w-full sm:w-auto">
+        <a href="#map-section" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-saffron to-[#ff8c42] text-white font-semibold text-sm tracking-wide shadow-lg saffron-glow hover:scale-105 transition-all flex items-center justify-center gap-2">
+          <span>Explore India Map</span>
+          <i data-lucide="map-pin" class="w-4 h-4"></i>
+        </a>
+        <a href="#message-generator" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/15 font-semibold text-sm tracking-wide backdrop-blur-md hover:scale-105 transition-all flex items-center justify-center gap-2">
+          <span>Create Freedom Card</span>
+          <i data-lucide="sparkles" class="w-4 h-4 text-saffron-light"></i>
+        </a>
+      </div>
+
+      <div class="mt-16 flex flex-col items-center gap-2 text-xs font-mono text-slate-400">
+        <span>SCROLL TO DISCOVER</span>
+        <div class="w-5 h-9 rounded-full border-2 border-white/20 flex items-start justify-center p-1">
+          <div class="w-1.5 h-2 bg-saffron rounded-full animate-bounce"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. INTERACTIVE 3D ASHOKA CHAKRA SHOWCASE -->
+  <section class="py-20 px-6 relative border-y border-white/5 bg-gradient-to-b from-transparent via-[#060b19]/60 to-transparent">
+    <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
+      <div id="chakra-3d-box" class="relative w-72 h-72 sm:w-96 sm:h-96 flex items-center justify-center cursor-grab active:cursor-grabbing">
+        <div class="absolute inset-4 rounded-full bg-blue-600/15 blur-3xl"></div>
+        <svg id="interactive-chakra" class="w-full h-full text-blue-500 transition-transform duration-200 ease-out select-none chakra-glow" viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="92" fill="none" stroke="#2563eb" stroke-width="4" stroke-opacity="0.8"/>
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="2 3"/>
+          <circle cx="100" cy="100" r="22" fill="none" stroke="#3b82f6" stroke-width="3"/>
+          <circle cx="100" cy="100" r="8" fill="#1d4ed8"/>
+          <g id="hero-chakra-spokes" stroke="#60a5fa" stroke-width="2.2" stroke-linecap="round"></g>
+          <g id="hero-chakra-beads" fill="#93c5fd"></g>
+        </svg>
+      </div>
+
+      <div class="lg:max-w-md text-left">
+        <div class="inline-flex items-center gap-2 text-xs font-mono text-blue-400 uppercase tracking-widest mb-3">
+          <i data-lucide="shield" class="w-4 h-4"></i> The Eternal Wheel of Dharma
+        </div>
+        <h3 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-4 leading-tight">
+          24 Spokes of Righteous Progress
+        </h3>
+        <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6 font-light">
+          Adopted from the Lion Capital of Ashoka at Sarnath, the 24 spokes signify eternal virtues: courage, sacrifice, truth, selflessness, righteousness, and unyielding service to humanity.
+        </p>
+        <div class="grid grid-cols-2 gap-4 border-t border-white/10 pt-4 text-xs font-mono">
+          <div>
+            <span class="text-slate-400 block">SPOKES</span>
+            <span class="text-lg font-bold text-blue-400">24 Virtues</span>
+          </div>
+          <div>
+            <span class="text-slate-400 block">COLOR</span>
+            <span class="text-lg font-bold text-blue-400">Navy Blue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FREEDOM JOURNEY TIMELINE -->
+  <section id="timeline" class="py-24 px-6 relative">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs font-mono tracking-widest uppercase text-saffron-light">Chronicles of Valor</span>
+        <h2 class="text-3xl md:text-5xl font-serif font-black text-white mt-2">The Freedom Journey</h2>
+        <p class="text-slate-400 text-sm md:text-base mt-3 max-w-xl mx-auto">A relentless saga of courage, tribal uprisings, mass movements, and sacrifice that forged our sovereign Republic.</p>
+      </div>
+
+      <div class="relative border-l-2 border-white/10 ml-4 md:ml-32 space-y-12 pb-8">
+        
+        <!-- 1857 -->
+        <div class="timeline-item relative pl-8 md:pl-12 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-saffron border-4 border-luxury-dark group-hover:scale-125 transition-transform"></div>
+          <span class="inline-block px-3 py-1 rounded bg-saffron/10 border border-saffron/30 text-saffron text-xs font-mono font-bold mb-2">1857</span>
+          <h3 class="text-xl md:text-2xl font-serif font-bold text-white mb-2">The First War of Independence</h3>
+          <p class="text-slate-300 text-sm leading-relaxed max-w-2xl">
+            Mangal Pandey, Rani Lakshmibai of Jhansi, Veer Kunwar Singh, and heroes across Chota Nagpur ignited the historic rebellion that shattered colonial rule.
+          </p>
+        </div>
+
+        <!-- 1895 - 1900 Birsa Munda Ulgulan -->
+        <div class="timeline-item relative pl-8 md:pl-12 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-400 border-4 border-luxury-dark group-hover:scale-125 transition-transform"></div>
+          <span class="inline-block px-3 py-1 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono font-bold mb-2">1895–1900</span>
+          <h3 class="text-xl md:text-2xl font-serif font-bold text-white mb-2">Bhagwan Birsa Munda & The 'Ulgulan' (Jharkhand)</h3>
+          <p class="text-slate-300 text-sm leading-relaxed max-w-2xl">
+            Dharti Aaba Birsa Munda mobilized the tribal community of Jharkhand against British exploitation, spearheading a legendary uprising for land, dignity, and self-rule.
+          </p>
+        </div>
+
+        <!-- 1930 -->
+        <div class="timeline-item relative pl-8 md:pl-12 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-luxury-dark group-hover:scale-125 transition-transform"></div>
+          <span class="inline-block px-3 py-1 rounded bg-white/10 border border-white/30 text-white text-xs font-mono font-bold mb-2">1930</span>
+          <h3 class="text-xl md:text-2xl font-serif font-bold text-white mb-2">Dandi March & Civil Disobedience</h3>
+          <p class="text-slate-300 text-sm leading-relaxed max-w-2xl">
+            Mahatma Gandhi walked 240 miles to the Arabian Sea to make salt, turning a natural mineral into the ultimate symbol of defiance against imperial tax monopolies.
+          </p>
+        </div>
+
+        <!-- 1942 -->
+        <div class="timeline-item relative pl-8 md:pl-12 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-saffron-light border-4 border-luxury-dark group-hover:scale-125 transition-transform"></div>
+          <span class="inline-block px-3 py-1 rounded bg-saffron/10 border border-saffron/30 text-saffron-light text-xs font-mono font-bold mb-2">1942</span>
+          <h3 class="text-xl md:text-2xl font-serif font-bold text-white mb-2">Quit India Movement ("Do or Die") & Hazaribagh Breakout</h3>
+          <p class="text-slate-300 text-sm leading-relaxed max-w-2xl">
+            Loknayak Jayaprakash Narayan made his legendary Diwali night escape from Hazaribagh Central Jail to lead the nationwide underground resistance.
+          </p>
+        </div>
+
+        <!-- 1947 -->
+        <div class="timeline-item relative pl-8 md:pl-12 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-greenState-light border-4 border-luxury-dark group-hover:scale-125 transition-transform"></div>
+          <span class="inline-block px-3 py-1 rounded bg-greenState/20 border border-greenState/40 text-greenState-light text-xs font-mono font-bold mb-2">1947</span>
+          <h3 class="text-xl md:text-2xl font-serif font-bold text-white mb-2">Tryst with Destiny: Midnight Dawn</h3>
+          <p class="text-slate-300 text-sm leading-relaxed max-w-2xl">
+            At the stroke of the midnight hour on 15 August 1947, India awoke to life and freedom as the tricolor soared atop the Red Fort.
+          </p>
+        </div>
+
+        <!-- 2026 -->
+        <div class="timeline-item relative pl-8 md:pl-12 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-saffron border-4 border-luxury-dark animate-ping"></div>
+          <span class="inline-block px-3 py-1 rounded bg-gradient-to-r from-saffron/20 to-greenState/20 border border-white/20 text-white text-xs font-mono font-bold mb-2">2026</span>
+          <h3 class="text-xl md:text-2xl font-serif font-bold text-saffron-light mb-2">India @ 80: Modern Global Powerhouse</h3>
+          <p class="text-slate-300 text-sm leading-relaxed max-w-2xl">
+            Eight decades of freedom celebrated through lunar south pole presence, semiconductor manufacturing, world-leading digital infrastructure, and 1.4 billion united citizens.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. INDIA @ 80 STATISTICS DASHBOARD -->
+  <section id="stats" class="py-20 px-6 relative bg-luxury-dark/80">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs font-mono tracking-widest uppercase text-saffron-light">Demographics & Strength</span>
+        <h2 class="text-3xl md:text-5xl font-serif font-black text-white mt-2">India @ 80 by Numbers</h2>
+        <p class="text-slate-400 text-sm md:text-base mt-2">Scale, diversity, and democratic endurance unparalleled in human history.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        
+        <div class="glass-card rounded-2xl p-6 text-center group transition-all duration-300 hover:-translate-y-2">
+          <div class="w-12 h-12 rounded-xl bg-saffron/10 border border-saffron/20 text-saffron mx-auto flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="flag" class="w-6 h-6"></i>
+          </div>
+          <div class="text-4xl md:text-5xl font-mono font-black text-white mb-1">
+            <span class="counter" data-target="80">0</span>
+          </div>
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-medium">Years of Independence</div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center group transition-all duration-300 hover:-translate-y-2">
+          <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 text-white mx-auto flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="users" class="w-6 h-6"></i>
+          </div>
+          <div class="text-4xl md:text-5xl font-mono font-black text-white mb-1">
+            <span class="counter" data-target="1.42" data-decimals="2">0</span><span class="text-saffron text-3xl">B+</span>
+          </div>
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-medium">Proud Citizens</div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center group transition-all duration-300 hover:-translate-y-2">
+          <div class="w-12 h-12 rounded-xl bg-greenState/20 border border-greenState/30 text-greenState-light mx-auto flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="map-pin" class="w-6 h-6"></i>
+          </div>
+          <div class="text-4xl md:text-5xl font-mono font-black text-white mb-1">
+            <span class="counter" data-target="28">0</span>
+          </div>
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-medium">States (incl. Jharkhand)</div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center group transition-all duration-300 hover:-translate-y-2">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mx-auto flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="landmark" class="w-6 h-6"></i>
+          </div>
+          <div class="text-4xl md:text-5xl font-mono font-black text-white mb-1">
+            <span class="counter" data-target="8">0</span>
+          </div>
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-medium">Union Territories</div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 text-center group transition-all duration-300 hover:-translate-y-2">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 mx-auto flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="languages" class="w-6 h-6"></i>
+          </div>
+          <div class="text-4xl md:text-5xl font-mono font-black text-white mb-1">
+            <span class="counter" data-target="22">0</span>
+          </div>
+          <div class="text-xs uppercase tracking-wider text-slate-400 font-medium">Scheduled Languages</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. INDIA'S PROGRESS -->
+  <section id="achievements" class="py-24 px-6 relative">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs font-mono tracking-widest uppercase text-saffron-light">Frontiers of Innovation</span>
+        <h2 class="text-3xl md:text-5xl font-serif font-black text-white mt-2">India's Journey of Progress</h2>
+        <p class="text-slate-400 text-sm md:text-base mt-2 max-w-xl mx-auto">From mineral and industrial powerhouses like Jharkhand to deep space and digital frontier supremacy.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Space & ISRO -->
+        <div class="glass-card rounded-3xl p-8 group relative overflow-hidden transition-all duration-500 hover:-translate-y-2 border-t-2 border-t-saffron/40">
+          <div class="w-14 h-14 rounded-2xl bg-saffron/10 border border-saffron/30 text-saffron flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="rocket" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-2xl font-serif font-bold text-white mb-3">Space & ISRO</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">
+            Chandrayaan-3 lunar south pole landing, Aditya-L1 solar observatory, Gaganyaan human spaceflight, and next-gen space stations.
+          </p>
+          <div class="text-xs font-mono text-saffron-light flex items-center gap-1 font-semibold">
+            <span>Space Superpower</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+        <!-- Digital India -->
+        <div class="glass-card rounded-3xl p-8 group relative overflow-hidden transition-all duration-500 hover:-translate-y-2 border-t-2 border-t-blue-500/40">
+          <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="cpu" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-2xl font-serif font-bold text-white mb-3">Digital Public Infra</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">
+            Over 10 billion monthly UPI transactions, Aadhaar digital identity, ONDC open e-commerce, and world-class AI hubs.
+          </p>
+          <div class="text-xs font-mono text-blue-400 flex items-center gap-1 font-semibold">
+            <span>Global FinTech Benchmark</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+        <!-- Mineral & Industrial Power (Jharkhand Core) -->
+        <div class="glass-card rounded-3xl p-8 group relative overflow-hidden transition-all duration-500 hover:-translate-y-2 border-t-2 border-t-amber-500/40">
+          <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="factory" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-2xl font-serif font-bold text-white mb-3">Mining & Steel Core</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">
+            Jharkhand’s mineral heartland (Coal, Iron Ore, Copper, Mica) powering national steel, heavy industries, and infrastructure development.
+          </p>
+          <div class="text-xs font-mono text-amber-400 flex items-center gap-1 font-semibold">
+            <span>Jharkhand: Industrial Engine</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+        <!-- Renewable Energy -->
+        <div class="glass-card rounded-3xl p-8 group relative overflow-hidden transition-all duration-500 hover:-translate-y-2 border-t-2 border-t-greenState-light/40">
+          <div class="w-14 h-14 rounded-2xl bg-greenState/20 border border-greenState/40 text-greenState-light flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="sun" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-2xl font-serif font-bold text-white mb-3">Renewable Energy</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">
+            500 GW clean capacity pipeline, International Solar Alliance leadership, and world's lowest solar production costs.
+          </p>
+          <div class="text-xs font-mono text-greenState-light flex items-center gap-1 font-semibold">
+            <span>Green Energy Pioneer</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+        <!-- Defence & Aatmanirbharta -->
+        <div class="glass-card rounded-3xl p-8 group relative overflow-hidden transition-all duration-500 hover:-translate-y-2 border-t-2 border-t-purple-500/40">
+          <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="shield-check" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-2xl font-serif font-bold text-white mb-3">Defence & Self-Reliance</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">
+            INS Vikrant carrier, LCA Tejas supersonic fighter, BrahMos precision missiles, and indigenous tactical defense shields.
+          </p>
+          <div class="text-xs font-mono text-purple-400 flex items-center gap-1 font-semibold">
+            <span>Aatmanirbhar Bharat</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+        <!-- Sports & Global Leadership -->
+        <div class="glass-card rounded-3xl p-8 group relative overflow-hidden transition-all duration-500 hover:-translate-y-2 border-t-2 border-t-rose-500/40">
+          <div class="w-14 h-14 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <i data-lucide="trophy" class="w-7 h-7"></i>
+          </div>
+          <h3 class="text-2xl font-serif font-bold text-white mb-3">Sports & Culture</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 font-light">
+            Olympic and Paralympic triumphs, Chess Olympiad champions, cricket supremacy (MS Dhoni's Ranchi legacy), and youth prowess.
+          </p>
+          <div class="text-xs font-mono text-rose-400 flex items-center gap-1 font-semibold">
+            <span>Champion Spirit</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. HIGH-PRECISION INTERACTIVE MAP OF INDIA (WITH JHARKHAND & HAZARIBAGH HIGHLIGHT) -->
+  <section id="map-section" class="py-24 px-6 relative bg-gradient-to-b from-transparent via-[#080d1e]/80 to-transparent">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-saffron/10 border border-saffron/30 text-xs font-mono text-saffron-light uppercase mb-3">
+          <i data-lucide="map" class="w-3.5 h-3.5"></i> Sovereign Geography of Bharat
+        </div>
+        <h2 class="text-3xl md:text-5xl font-serif font-black text-white">Interactive Map of India 🇮🇳</h2>
+        <p class="text-slate-400 text-sm md:text-base mt-2 max-w-2xl mx-auto">
+          Hover or tap across states to explore regional identities. <strong class="text-saffron-light font-semibold">Jharkhand (Ranchi & Hazaribagh)</strong> is specially highlighted.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-3xl p-6 md:p-10 flex flex-col lg:flex-row items-center gap-10 relative overflow-hidden border border-white/15">
+        
+        <!-- Vector Map Container -->
+        <div class="w-full lg:w-1/2 flex flex-col items-center justify-center relative">
+          
+          <div class="relative w-full max-w-[420px] aspect-[400/480] bg-[#070b16]/70 rounded-2xl p-3 border border-white/10 shadow-2xl flex items-center justify-center">
+            
+            <svg id="india-master-map" class="w-full h-full drop-shadow-2xl select-none" viewBox="0 0 460 520">
+              <defs>
+                <filter id="glow-jharkhand" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="4" result="blur" />
+                  <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                </filter>
+                <linearGradient id="jharkhandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FF9933" />
+                  <stop offset="50%" stop-color="#FF671F" />
+                  <stop offset="100%" stop-color="#D95000" />
+                </linearGradient>
+              </defs>
+
+              <!-- Base Geographic India Outline & State Regions -->
+              
+              <!-- 1. Northern Crown: Ladakh & Jammu-Kashmir -->
+              <path class="state-interactive"
+                    data-name="Ladakh & Jammu-Kashmir"
+                    data-capital="Leh, Srinagar, Jammu"
+                    data-tagline="Crown of the Himalayas & National Sentinel"
+                    data-desc="Land of high passes, spiritual shrines, glaciers, and eternal natural beauty safeguarding northern frontiers."
+                    fill="#15213b" stroke="#38bdf8" stroke-width="1.2"
+                    d="M170,30 C190,20 220,18 240,40 C250,55 245,80 230,95 C205,95 180,85 160,70 C150,50 160,35 170,30 Z" />
+
+              <!-- 2. Himachal Pradesh & Uttarakhand -->
+              <path class="state-interactive"
+                    data-name="Himachal Pradesh & Uttarakhand (Devbhoomi)"
+                    data-capital="Shimla, Dehradun, Gairsain"
+                    data-tagline="Abode of the Gods, Rivers & Snow Peaks"
+                    data-desc="Source of holy Ganga and Yamuna, lush valleys, apple orchards, and supreme spiritual sanctuaries."
+                    fill="#101d36" stroke="#60a5fa" stroke-width="1"
+                    d="M200,95 C225,95 240,90 250,115 C240,135 220,135 200,125 C190,110 195,100 200,95 Z" />
+
+              <!-- 3. Punjab & Haryana & Delhi NCR -->
+              <path class="state-interactive"
+                    data-name="Punjab, Haryana & National Capital Region (Delhi)"
+                    data-capital="Chandigarh, New Delhi"
+                    data-tagline="Granary of Bharat & The Seat of National Power"
+                    data-desc="The land of five rivers, golden wheat fields, brave soldiers, and India's administrative nerve centre."
+                    fill="#142442" stroke="#60a5fa" stroke-width="1"
+                    d="M165,95 C195,95 200,120 190,140 C170,145 155,130 155,110 Z" />
+
+              <!-- 4. Rajasthan (Thar & Forts) -->
+              <path class="state-interactive"
+                    data-name="Rajasthan"
+                    data-capital="Jaipur (Pink City)"
+                    data-tagline="Land of Kings, Palaces, Valour & Solar Parks"
+                    data-desc="Majestic forts of Mewar and Marwar, Thar Desert solar energy installations, vibrant culture, and timeless royalty."
+                    fill="#121e36" stroke="#60a5fa" stroke-width="1"
+                    d="M110,130 C155,125 165,145 165,200 C130,215 105,190 95,155 C98,140 105,132 110,130 Z" />
+
+              <!-- 5. Gujarat (Western Frontier) -->
+              <path class="state-interactive"
+                    data-name="Gujarat"
+                    data-capital="Gandhinagar, Ahmedabad"
+                    data-tagline="Land of Gir Lions, White Rann, Trade & Dandi March"
+                    data-desc="Longest coastline, global trade hub, home to Mahatma Gandhi, Sardar Patel, and the Statue of Unity."
+                    fill="#13223d" stroke="#60a5fa" stroke-width="1"
+                    d="M80,195 C115,190 125,215 125,250 C95,260 70,235 65,215 C70,200 75,198 80,195 Z" />
+
+              <!-- 6. Uttar Pradesh (Gangetic Heart) -->
+              <path class="state-interactive"
+                    data-name="Uttar Pradesh"
+                    data-capital="Lucknow"
+                    data-tagline="Cradle of Indian Heritage, Ganga-Jamuni Tehzeeb & Ayodhya"
+                    data-desc="Most populous state, land of Kashi, Mathura, Prayagraj, rich agricultural plains, and massive expressways."
+                    fill="#152445" stroke="#60a5fa" stroke-width="1"
+                    d="M190,135 C240,130 265,145 270,185 C230,195 200,185 180,165 C180,145 185,138 190,135 Z" />
+
+              <!-- 7. Bihar -->
+              <path class="state-interactive"
+                    data-name="Bihar"
+                    data-capital="Patna (Pataliputra)"
+                    data-tagline="Land of Nalanda, Buddha, Mahavira & Chanakya"
+                    data-desc="Ancient seat of world education, democracy of Vaishali, fertile Gangetic soil, and IAS/civil services powerhouse."
+                    fill="#12203b" stroke="#60a5fa" stroke-width="1"
+                    d="M270,165 C305,160 320,180 310,205 C290,205 275,200 270,185 Z" />
+
+              <!-- 8. ⭐ JHARKHAND (SPECIALLY HIGHLIGHTED WITH GOLDEN/SAFFRON GLOW) ⭐ -->
+              <g id="jharkhand-map-group" class="cursor-pointer">
+                <!-- Highlighted Boundary -->
+                <path class="state-interactive jharkhand-special"
+                      id="jharkhand-state-path"
+                      data-name="Jharkhand (The Land of Forests & Minerals)"
+                      data-capital="Ranchi (Key Cities: Hazaribagh, Jamshedpur, Dhanbad)"
+                      data-tagline="Land of Bhagwan Birsa Munda, Hazaribagh National Park & Mineral Wealth"
+                      data-desc="Famous for vast forest canopies, waterfalls, Parasnath hills, Hazaribagh lakes, rich coal and mineral reserves, and tribal bravery."
+                      fill="url(#jharkhandGrad)" stroke="#FFE899" stroke-width="2.2" filter="url(#glow-jharkhand)"
+                      d="M268,205 C285,198 308,202 312,220 C310,242 290,255 272,250 C262,238 260,218 268,205 Z" />
+                
+                <!-- Hazaribagh & Ranchi Markers inside Jharkhand -->
+                <!-- Hazaribagh Pin -->
+                <g transform="translate(282, 218)">
+                  <circle cx="0" cy="0" r="8" fill="#FF671F" opacity="0.4" class="animate-ping" />
+                  <circle cx="0" cy="0" r="3.5" fill="#FFFFFF" stroke="#06038D" stroke-width="1.5" />
+                  <text x="5" y="3" fill="#FFEAA7" font-size="7.5" font-family="Space Grotesk" font-weight="bold">Hazaribagh</text>
+                </g>
+
+                <!-- Ranchi Pin -->
+                <g transform="translate(284, 235)">
+                  <circle cx="0" cy="0" r="3" fill="#138808" stroke="#FFFFFF" stroke-width="1" />
+                  <text x="5" y="3" fill="#A8FFB2" font-size="7" font-family="Space Grotesk">Ranchi</text>
+                </g>
+              </g>
+
+              <!-- 9. West Bengal & Odisha -->
+              <path class="state-interactive"
+                    data-name="West Bengal & Odisha"
+                    data-capital="Kolkata, Bhubaneswar"
+                    data-tagline="Land of Rabindranath Tagore, Konark, Jagannath Puri & Bay of Bengal"
+                    data-desc="Rich artistic soul, Sundarbans mangrove, vibrant Durga Puja, maritime heritage, and eastern industrial ports."
+                    fill="#101c33" stroke="#60a5fa" stroke-width="1"
+                    d="M312,205 C330,205 335,235 320,265 C300,285 275,270 275,250 C295,250 310,235 312,205 Z" />
+
+              <!-- 10. Northeast India (Seven Sisters & Sikkim) -->
+              <path class="state-interactive"
+                    data-name="Northeast Frontier (Assam, Meghalaya, Arunachal, Sikkim & Sisters)"
+                    data-capital="Guwahati, Shillong, Itanagar, Gangtok, Imphal, Aizawl, Kohima, Agartala"
+                    data-tagline="Ashta Lakshmi: Paradise of Biodiversity, Living Root Bridges & Tea Gardens"
+                    data-desc="Brahmaputra river, pristine rainforests, indigenous tribal heritage, Kaziranga rhinos, and rising sports icons."
+                    fill="#142340" stroke="#38bdf8" stroke-width="1"
+                    d="M335,170 C365,150 420,145 425,185 C415,225 365,220 340,210 C330,195 330,180 335,170 Z" />
+
+              <!-- 11. Madhya Pradesh & Chhattisgarh (Central Heartland) -->
+              <path class="state-interactive"
+                    data-name="Madhya Pradesh & Chhattisgarh"
+                    data-capital="Bhopal, Raipur"
+                    data-tagline="Heart of India, Tiger Capital, Mahakal Ujjain & Tribal Arts"
+                    data-desc="Khajuraho, Sanchi Stupa, dense national parks, Bastar crafts, and mineral-rich plateaus."
+                    fill="#121e36" stroke="#60a5fa" stroke-width="1"
+                    d="M175,190 C220,185 260,200 262,250 C240,285 190,270 165,240 C165,210 170,195 175,190 Z" />
+
+              <!-- 12. Maharashtra & Goa -->
+              <path class="state-interactive"
+                    data-name="Maharashtra & Goa"
+                    data-capital="Mumbai, Panaji"
+                    data-tagline="Financial Capital, Western Ghats, Chhatrapati Shivaji's Forts"
+                    data-desc="Economic dynamo, Bollywood, Ajanta-Ellora caves, Konkan coastline, and vibrant Ganesh Utsav."
+                    fill="#14223d" stroke="#60a5fa" stroke-width="1"
+                    d="M125,250 C170,240 185,270 175,340 C130,345 115,310 115,265 Z" />
+
+              <!-- 13. Southern States: Karnataka, Telangana, Andhra, Tamil Nadu, Kerala -->
+              <path class="state-interactive"
+                    data-name="Southern Peninsula (Karnataka, Telangana, AP, Tamil Nadu, Kerala)"
+                    data-capital="Bengaluru, Hyderabad, Amaravati, Chennai, Thiruvananthapuram"
+                    data-tagline="Silicon Silicon Hubs, Spaceports (Sriharikota), Dravidian Architecture & Ayurveda"
+                    data-desc="ISRO launch pads, temple architecture of Tanjore and Madurai, God's Own Country Kerala, Bengaluru tech capital."
+                    fill="#0f1a30" stroke="#60a5fa" stroke-width="1.2"
+                    d="M140,345 C200,320 230,335 210,430 C190,475 175,485 165,470 C140,430 130,380 140,345 Z" />
+
+              <!-- Indian Islands -->
+              <!-- Lakshadweep -->
+              <g class="state-interactive" data-name="Lakshadweep Islands" data-capital="Kavaratti" data-tagline="Emerald Coral Atolls in Arabian Sea" data-desc="Pristine turquoise lagoons and marine biodiversity.">
+                <circle cx="100" cy="420" r="3.5" fill="#38bdf8" />
+                <circle cx="95" cy="435" r="3" fill="#38bdf8" />
+                <text x="60" y="450" fill="#94a3b8" font-size="8" font-family="Space Grotesk">Lakshadweep</text>
+              </g>
+
+              <!-- Andaman & Nicobar -->
+              <g class="state-interactive" data-name="Andaman & Nicobar Islands" data-capital="Port Blair" data-tagline="Historical Cellular Jail & Emerald Tropical Islands" data-desc="Cellular Jail tribute to freedom fighters, pristine coral reefs, and southern maritime boundary.">
+                <ellipse cx="380" cy="380" rx="3.5" ry="9" fill="#38bdf8" />
+                <ellipse cx="385" cy="415" rx="3" ry="6" fill="#38bdf8" />
+                <text x="330" y="440" fill="#94a3b8" font-size="8" font-family="Space Grotesk">Andaman & Nicobar</text>
+              </g>
+            </svg>
+
+            <!-- Map Saffron Badge -->
+            <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10 text-[11px] font-mono text-saffron-light flex items-center gap-1.5 pointer-events-none">
+              <span class="w-2 h-2 rounded-full bg-saffron animate-ping"></span>
+              <span>Jharkhand Selected</span>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-4 mt-3 text-xs font-mono text-slate-400">
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-[#FF671F] inline-block border border-white/40"></span> Jharkhand / Hazaribagh</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-[#152445] inline-block border border-blue-400/40"></span> Indian States & UTs</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Map Detail Card -->
+        <div class="w-full lg:w-1/2 flex flex-col justify-center">
+          <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-br from-white/[0.05] via-white/[0.02] to-transparent border border-white/10 backdrop-blur-md relative overflow-hidden">
+            
+            <div class="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-saffron/10 blur-2xl"></div>
+
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono uppercase tracking-widest text-saffron-light flex items-center gap-2">
+                <i data-lucide="map-pin" class="w-4 h-4 text-saffron"></i> State Spotlight
+              </span>
+              <span id="map-region-status" class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-saffron/20 border border-saffron/40 text-saffron-light">
+                Special Highlight
+              </span>
+            </div>
+
+            <h3 id="map-region-title" class="text-2xl md:text-3xl font-serif font-bold text-white mb-2">
+              Jharkhand (झारखंड)
+            </h3>
+            
+            <p id="map-region-tagline" class="text-saffron-light font-mono text-xs md:text-sm font-semibold mb-4 leading-relaxed">
+              Land of Bhagwan Birsa Munda, Hazaribagh National Park & Mineral Wealth
+            </p>
+
+            <p id="map-region-desc" class="text-slate-300 text-sm leading-relaxed mb-6 font-light">
+              Jharkhand is known for rich tribal heritage, waterfalls, dense sal forests, Hazaribagh plateau, and mineral richness. It holds a glorious chapter in the Indian freedom struggle from the 1857 revolt to the 1942 Quit India breakout.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 border-t border-white/10 pt-4 text-xs font-mono">
+              <div>
+                <span class="text-slate-400 block mb-1">KEY CITIES / CENTRES</span>
+                <span id="map-region-capital" class="text-slate-100 font-bold">Ranchi, Hazaribagh, Jamshedpur</span>
+              </div>
+              <div>
+                <span class="text-slate-400 block mb-1">HERITAGE</span>
+                <span id="map-region-extra" class="text-greenState-light font-bold">Birsa Munda • Sal Forests</span>
+              </div>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-white/5 flex items-center gap-2 text-xs font-mono text-slate-400">
+              <i data-lucide="touchpad" class="w-4 h-4 text-saffron"></i>
+              <span>Hover over any region on the map to view details.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PATRIOTIC QUOTES SECTION -->
+  <section class="py-24 px-6 relative">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="w-12 h-12 rounded-full bg-saffron/10 border border-saffron/30 text-saffron mx-auto flex items-center justify-center mb-6">
+        <i data-lucide="quote" class="w-6 h-6"></i>
+      </div>
+
+      <div id="quotes-container" class="relative min-h-[220px] flex items-center justify-center">
+        <!-- Quote 1 -->
+        <div class="quote-slide transition-opacity duration-700 ease-in-out">
+          <blockquote class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white leading-relaxed mb-6">
+            "Swaraj is my birthright and I shall have it!"
+          </blockquote>
+          <cite class="not-italic text-sm font-mono text-saffron-light font-semibold tracking-wider">
+            — Lokmanya Bal Gangadhar Tilak
+          </cite>
+        </div>
+
+        <!-- Quote 2 -->
+        <div class="quote-slide transition-opacity duration-700 ease-in-out hidden">
+          <blockquote class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white leading-relaxed mb-6">
+            "Arise, awake, and stop not till the goal is reached."
+          </blockquote>
+          <cite class="not-italic text-sm font-mono text-saffron-light font-semibold tracking-wider">
+            — Swami Vivekananda
+          </cite>
+        </div>
+
+        <!-- Quote 3 -->
+        <div class="quote-slide transition-opacity duration-700 ease-in-out hidden">
+          <blockquote class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white leading-relaxed mb-6">
+            "Abua Dishom Re Abua Raj (Our land, our rule)!"
+          </blockquote>
+          <cite class="not-italic text-sm font-mono text-saffron-light font-semibold tracking-wider">
+            — Bhagwan Birsa Munda (Jharkhand)
+          </cite>
+        </div>
+
+        <!-- Quote 4 -->
+        <div class="quote-slide transition-opacity duration-700 ease-in-out hidden">
+          <blockquote class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white leading-relaxed mb-6">
+            "Give me blood, and I will give you freedom!"
+          </blockquote>
+          <cite class="not-italic text-sm font-mono text-saffron-light font-semibold tracking-wider">
+            — Netaji Subhas Chandra Bose
+          </cite>
+        </div>
+      </div>
+
+      <div class="flex justify-center gap-3 mt-8">
+        <button class="quote-dot w-3 h-3 rounded-full bg-saffron transition-all" data-index="0" aria-label="Quote 1"></button>
+        <button class="quote-dot w-3 h-3 rounded-full bg-white/20 transition-all" data-index="1" aria-label="Quote 2"></button>
+        <button class="quote-dot w-3 h-3 rounded-full bg-white/20 transition-all" data-index="2" aria-label="Quote 3"></button>
+        <button class="quote-dot w-3 h-3 rounded-full bg-white/20 transition-all" data-index="3" aria-label="Quote 4"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FREEDOM HEROES & ICONS -->
+  <section id="heroes" class="py-24 px-6 relative bg-luxury-dark/90">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs font-mono tracking-widest uppercase text-saffron-light">Immortal Titans</span>
+        <h2 class="text-3xl md:text-5xl font-serif font-black text-white mt-2">Freedom Fighters & Architects</h2>
+        <p class="text-slate-400 text-sm md:text-base mt-2">Tribute to the courageous visionaries who gave their today for our tomorrow.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Bhagwan Birsa Munda (Highlighted) -->
+        <div class="glass-card rounded-2xl p-6 group hover:-translate-y-2 transition-all duration-300 border-saffron/40">
+          <div class="w-16 h-16 rounded-full bg-saffron/20 border border-saffron/50 flex items-center justify-center text-saffron text-2xl font-serif font-bold mb-4 group-hover:scale-110 transition-transform">
+            BM
+          </div>
+          <h3 class="text-xl font-serif font-bold text-white mb-1">Birsa Munda</h3>
+          <span class="text-xs font-mono text-saffron-light block mb-3">1875 – 1900 • Dharti Aaba (Jharkhand)</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-light">
+            Legendary tribal leader and freedom hero who championed indigenous rights and led the Ulgulan rebellion against the British Raj.
+          </p>
+        </div>
+
+        <!-- Bhagat Singh -->
+        <div class="glass-card rounded-2xl p-6 group hover:-translate-y-2 transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-red-500/10 border border-red-500/30 flex items-center justify-center text-red-400 text-2xl font-serif font-bold mb-4 group-hover:scale-110 transition-transform">
+            BS
+          </div>
+          <h3 class="text-xl font-serif font-bold text-white mb-1">Bhagat Singh</h3>
+          <span class="text-xs font-mono text-red-400 block mb-3">1907 – 1931 • Revolutionary</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-light">
+            Fearless revolutionary thinker whose supreme martyrdom energized the Indian masses into unyielding rebellion.
+          </p>
+        </div>
+
+        <!-- Netaji Subhas Chandra Bose -->
+        <div class="glass-card rounded-2xl p-6 group hover:-translate-y-2 transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl font-serif font-bold mb-4 group-hover:scale-110 transition-transform">
+            SCB
+          </div>
+          <h3 class="text-xl font-serif font-bold text-white mb-1">Subhas Chandra Bose</h3>
+          <span class="text-xs font-mono text-blue-400 block mb-3">1897 – 1945 • Netaji</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-light">
+            Leader of the Indian National Army (Azad Hind Fauj) who challenged the empire with the historic call "Jai Hind".
+          </p>
+        </div>
+
+        <!-- Sardar Patel -->
+        <div class="glass-card rounded-2xl p-6 group hover:-translate-y-2 transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl font-serif font-bold mb-4 group-hover:scale-110 transition-transform">
+            SVP
+          </div>
+          <h3 class="text-xl font-serif font-bold text-white mb-1">Sardar Patel</h3>
+          <span class="text-xs font-mono text-amber-400 block mb-3">1875 – 1950 • Iron Man of India</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-light">
+            Statesman who unified 565+ princely states into one sovereign Republic with wisdom and unwavering resolve.
+          </p>
+        </div>
+
+        <!-- Rani Lakshmibai -->
+        <div class="glass-card rounded-2xl p-6 group hover:-translate-y-2 transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 text-2xl font-serif font-bold mb-4 group-hover:scale-110 transition-transform">
+            RL
+          </div>
+          <h3 class="text-xl font-serif font-bold text-white mb-1">Rani Lakshmibai</h3>
+          <span class="text-xs font-mono text-rose-400 block mb-3">1828 – 1858 • Queen of Jhansi</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-light">
+            The symbol of female valour and courage who led her troops from the front in the 1857 War of Independence.
+          </p>
+        </div>
+
+        <!-- Mahatma Gandhi -->
+        <div class="glass-card rounded-2xl p-6 group hover:-translate-y-2 transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-white/10 border border-white/30 flex items-center justify-center text-white text-2xl font-serif font-bold mb-4 group-hover:scale-110 transition-transform">
+            MKG
+          </div>
+          <h3 class="text-xl font-serif font-bold text-white mb-1">Mahatma Gandhi</h3>
+          <span class="text-xs font-mono text-slate-300 block mb-3">1869 – 1948 • Father of Nation</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-light">
+            Championed Ahimsa (non-violence) and Satyagraha, leading mass non-cooperation and the historic Salt March.
+          </p>
+        </div>
+
+        <!-- Dr. B.R. Ambedkar -->
+        <div class="glass-card rounded-2xl p-6 group hover:-translate-y-2 transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-blue-600/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl font-serif font-bold mb-4 group-hover:scale-110 transition-transform">
+            BRA
+          </div>
+          <h3 class="text-xl font-serif font-bold text-white mb-1">Dr. B.R. Ambedkar</h3>
+          <span class="text-xs font-mono text-blue-400 block mb-3">1891 – 1956 • Chief Architect</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-light">
+            Framed the Constitution of India, enshrining justice, liberty, equality, and fraternity for all citizens.
+          </p>
+        </div>
+
+        <!-- Loknayak Jayaprakash Narayan -->
+        <div class="glass-card rounded-2xl p-6 group hover:-translate-y-2 transition-all duration-300">
+          <div class="w-16 h-16 rounded-full bg-greenState/20 border border-greenState/40 flex items-center justify-center text-greenState-light text-2xl font-serif font-bold mb-4 group-hover:scale-110 transition-transform">
+            JPN
+          </div>
+          <h3 class="text-xl font-serif font-bold text-white mb-1">Jayaprakash Narayan</h3>
+          <span class="text-xs font-mono text-greenState-light block mb-3">1902 – 1979 • Hazaribagh Hero</span>
+          <p class="text-slate-300 text-xs leading-relaxed font-light">
+            Escaped Hazaribagh Jail in 1942 during Quit India to organize nationwide resistance; champion of Total Revolution.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. INTERACTIVE TRICOLOR PARTICLES -->
+  <section id="tricolor-canvas" class="py-24 px-6 relative overflow-hidden">
+    <div class="max-w-6xl mx-auto text-center mb-8">
+      <span class="text-xs font-mono tracking-widest uppercase text-saffron-light">Interactive Physics Experience</span>
+      <h2 class="text-3xl md:text-5xl font-serif font-black text-white mt-2">Feel the Spirit of Freedom</h2>
+      <p class="text-slate-400 text-sm md:text-base mt-2">Move your cursor or finger across the canvas to generate glowing tricolor ribbons.</p>
+    </div>
+
+    <div class="max-w-5xl mx-auto relative rounded-3xl overflow-hidden glass-card border border-white/15 h-[400px] shadow-2xl">
+      <canvas id="fluid-canvas" class="w-full h-full block cursor-crosshair"></canvas>
+      <div class="absolute bottom-4 left-6 pointer-events-none text-xs font-mono text-slate-400 flex items-center gap-2">
+        <i data-lucide="mouse-pointer-2" class="w-4 h-4 text-saffron"></i>
+        <span>Touch / Move to weave Saffron, White & Green</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FREEDOM MESSAGE GENERATOR (WITH AMIT & HAZARIBAGH, JHARKHAND DEFAULT) -->
+  <section id="message-generator" class="py-24 px-6 relative bg-gradient-to-b from-transparent via-[#0a0f24]/90 to-transparent">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <span class="text-xs font-mono tracking-widest uppercase text-saffron-light">Personal Commemorative Card</span>
+        <h2 class="text-3xl md:text-5xl font-serif font-black text-white mt-2">Generate Your Independence Card</h2>
+        <p class="text-slate-400 text-sm md:text-base mt-2">Customize and instantly export a high-resolution Independence Day 2026 digital card.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+        
+        <!-- Form Input -->
+        <div class="glass-card rounded-3xl p-8">
+          <form id="card-form" class="space-y-6" onsubmit="return false;">
+            <div>
+              <label for="user-name" class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">Your Name</label>
+              <input type="text" id="user-name" maxlength="32" placeholder="e.g., Amit" value="Amit" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-saffron focus:outline-none text-white text-sm transition-colors" />
+            </div>
+
+            <div>
+              <label for="user-city" class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">City / State</label>
+              <input type="text" id="user-city" maxlength="36" placeholder="e.g., Hazaribagh, Jharkhand" value="Hazaribagh, Jharkhand" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-saffron focus:outline-none text-white text-sm transition-colors" />
+            </div>
+
+            <div>
+              <label for="user-msg" class="block text-xs font-mono uppercase tracking-wider text-slate-300 mb-2">Your Patriotic Message</label>
+              <textarea id="user-msg" maxlength="150" rows="3" placeholder="Write your patriotic message..." class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-saffron focus:outline-none text-white text-sm transition-colors">झारखंड की पावन धरती हज़ारीबाग़ से 80वें स्वतंत्रता दिवस की हार्दिक शुभकामनाएँ! देश के वीर शहीदों को कोटि-कोटि नमन। जय हिन्द, वन्दे मातरम्! 🇮🇳</textarea>
+            </div>
+
+            <div class="flex gap-4">
+              <button type="button" id="update-preview-btn" class="flex-1 py-3.5 rounded-full bg-saffron hover:bg-saffron-light text-white font-semibold text-sm tracking-wide shadow-md saffron-glow transition-all flex items-center justify-center gap-2">
+                <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                <span>Update Card</span>
+              </button>
+              <button type="button" id="download-card-btn" class="flex-1 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold text-sm tracking-wide backdrop-blur-md transition-all flex items-center justify-center gap-2">
+                <i data-lucide="download" class="w-4 h-4 text-greenState-light"></i>
+                <span>Download PNG</span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Live Digital Card Preview -->
+        <div class="flex flex-col items-center">
+          <div id="freedom-card-preview" class="w-full max-w-[420px] aspect-[4/5] rounded-3xl p-8 relative flex flex-col justify-between overflow-hidden shadow-2xl border border-white/20 bg-gradient-to-br from-[#12182b] via-[#090d18] to-[#04060d]">
+            
+            <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-saffron via-white to-greenState"></div>
+            <div class="absolute -right-16 -bottom-16 w-48 h-48 rounded-full bg-saffron/10 blur-2xl"></div>
+
+            <!-- Ashoka Chakra Watermark -->
+            <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-56 h-56 text-blue-500/10 pointer-events-none animate-spin-slow" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2"/>
+              <g stroke="currentColor" stroke-width="1.5">
+                <line x1="50" y1="50" x2="50" y2="4"/>
+                <line x1="50" y1="50" x2="50" y2="96"/>
+                <line x1="50" y1="50" x2="4" y2="50"/>
+                <line x1="50" y1="50" x2="96" y2="50"/>
+              </g>
+            </svg>
+
+            <!-- Card Header -->
+            <div class="relative z-10 flex items-center justify-between border-b border-white/10 pb-4">
+              <div>
+                <span class="text-[10px] font-mono uppercase tracking-widest text-saffron-light font-bold">Commemorative Card</span>
+                <h4 class="font-serif font-bold text-white text-lg tracking-wider">INDIA @ 80 🇮🇳</h4>
+              </div>
+              <span class="text-xs font-mono text-slate-400">15 AUG 2026</span>
+            </div>
+
+            <!-- Card Body / Message -->
+            <div class="relative z-10 my-auto py-4">
+              <i data-lucide="quote" class="w-8 h-8 text-saffron/40 mb-2"></i>
+              <p id="card-display-msg" class="text-white text-sm md:text-base font-serif italic leading-relaxed">
+                "झारखंड की पावन धरती हज़ारीबाग़ से 80वें स्वतंत्रता दिवस की हार्दिक शुभकामनाएँ! देश के वीर शहीदों को कोटि-कोटि नमन। जय हिन्द, वन्दे मातरम्! 🇮🇳"
+              </p>
+            </div>
+
+            <!-- Card Footer -->
+            <div class="relative z-10 border-t border-white/10 pt-4 flex items-center justify-between">
+              <div>
+                <h5 id="card-display-name" class="font-bold text-white text-base">Amit</h5>
+                <span id="card-display-city" class="text-xs font-mono text-saffron-light">Hazaribagh, Jharkhand</span>
+              </div>
+              <div class="text-right">
+                <span class="text-xs font-serif font-black text-saffron-light">वन्दे मातरम्</span>
+              </div>
+            </div>
+
+          </div>
+          <p class="text-xs font-mono text-slate-400 mt-4">⚡ High-Res PNG direct render. Ready to share on WhatsApp & Social.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. GRAND FINALE CELEBRATION -->
+  <section class="py-28 px-6 relative text-center overflow-hidden border-t border-white/10">
+    <div class="absolute inset-0 bg-gradient-to-t from-saffron/10 via-transparent to-greenState/10 pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+      <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-saffron via-white to-greenState flex items-center justify-center p-1 mb-8 shadow-2xl animate-float">
+        <div class="w-full h-full bg-[#05070e] rounded-full flex items-center justify-center">
+          <svg class="w-10 h-10 text-blue-500 animate-spin-slow" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="4"/>
+            <circle cx="50" cy="50" r="10" fill="currentColor"/>
+          </svg>
+        </div>
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl md:text-6xl font-serif font-black text-white mb-4 leading-tight">
+        India. United. Free. <br /><span class="tricolor-gradient-text">Future Ready.</span>
+      </h2>
+
+      <p class="text-lg md:text-xl text-slate-300 font-light max-w-2xl mb-10">
+        Happy 80th Independence Day! From Hazaribagh, Jharkhand to every corner of Bharat, let us salute our motherland.
+      </p>
+
+      <button id="celebrate-btn" class="px-10 py-5 rounded-full bg-gradient-to-r from-saffron via-white to-greenState text-slate-950 font-black text-base uppercase tracking-widest shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center gap-3">
+        <span>🇮🇳 JAI HIND !</span>
+        <i data-lucide="sparkles" class="w-5 h-5 text-blue-900"></i>
+      </button>
+      <span class="text-xs font-mono text-slate-400 mt-3">Click to launch National Tricolor Fireworks</span>
+    </div>
+  </section>
+
+  <!-- 12. FOOTER -->
+  <footer class="py-12 px-6 border-t border-white/10 bg-black/40 text-xs font-mono text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <span class="font-serif font-bold text-white text-base">INDIA<span class="text-saffron">80</span></span>
+        <span>• 15 August 1947 – 15 August 2026</span>
+      </div>
+      <div class="text-center">
+        Honouring freedom fighters, soldiers, scientists, and the citizens of Jharkhand & all states of Bharat.
+      </div>
+      <div class="flex items-center gap-4 text-slate-300">
+        <a href="#hero" class="hover:text-saffron transition-colors">Back to Top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT & INTERACTION ENGINE -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Register GSAP ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* 1. BUILD ASHOKA CHAKRA SPOKES */
+    function buildChakraSpokes() {
+      const heroSpokes = document.getElementById('hero-chakra-spokes');
+      const heroBeads = document.getElementById('hero-chakra-beads');
+      const preloaderSpokes = document.getElementById('preloader-spokes');
+
+      for (let i = 0; i < 24; i++) {
+        const angle = (i * 360) / 24;
+        const rad = (angle * Math.PI) / 180;
+
+        if (heroSpokes) {
+          const x2 = 100 + 86 * Math.cos(rad);
+          const y2 = 100 + 86 * Math.sin(rad);
+          const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          line.setAttribute('x1', '100');
+          line.setAttribute('y1', '100');
+          line.setAttribute('x2', x2);
+          line.setAttribute('y2', y2);
+          heroSpokes.appendChild(line);
+
+          if (heroBeads) {
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', x2);
+            circle.setAttribute('cy', y2);
+            circle.setAttribute('r', '2.5');
+            heroBeads.appendChild(circle);
+          }
+        }
+
+        if (preloaderSpokes) {
+          const px2 = 50 + 46 * Math.cos(rad);
+          const py2 = 50 + 46 * Math.sin(rad);
+          const pline = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+          pline.setAttribute('x1', '50');
+          pline.setAttribute('y1', '50');
+          pline.setAttribute('x2', px2);
+          pline.setAttribute('y2', py2);
+          preloaderSpokes.appendChild(pline);
+        }
+      }
+    }
+    buildChakraSpokes();
+
+    /* 2. PRELOADER */
+    const preloader = document.getElementById('preloader');
+    const preloaderBar = document.getElementById('preloader-bar');
+    const preloaderPercent = document.getElementById('preloader-percent');
+
+    let loadProgress = 0;
+    const loadInterval = setInterval(() => {
+      loadProgress += Math.floor(Math.random() * 15) + 5;
+      if (loadProgress >= 100) {
+        loadProgress = 100;
+        clearInterval(loadInterval);
+        preloaderBar.style.width = '100%';
+        preloaderPercent.innerText = '100%';
+
+        setTimeout(() => {
+          gsap.to(preloader, {
+            opacity: 0,
+            y: -40,
+            duration: 0.8,
+            ease: 'power3.inOut',
+            onComplete: () => {
+              preloader.style.display = 'none';
+              initHeroEntrance();
+            }
+          });
+        }, 400);
+      } else {
+        preloaderBar.style.width = loadProgress + '%';
+        preloaderPercent.innerText = loadProgress + '%';
+      }
+    }, 40);
+
+    function initHeroEntrance() {
+      gsap.from('#hero h1, #hero h2, #hero p, #hero a', {
+        opacity: 0,
+        y: 35,
+        stagger: 0.12,
+        duration: 1,
+        ease: 'power3.out'
+      });
+    }
+
+    /* 3. CUSTOM CURSOR */
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+
+    if (window.matchMedia('(pointer: fine)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        const { clientX: x, clientY: y } = e;
+        cursorDot.style.transform = `translate(${x}px, ${y}px)`;
+        cursorRing.style.transform = `translate(${x}px, ${y}px)`;
+      });
+
+      document.querySelectorAll('a, button, input, textarea, .glass-card, .state-interactive').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+    }
+
+    /* 4. 3D CHAKRA PARALLAX */
+    const chakraBox = document.getElementById('chakra-3d-box');
+    const chakraSvg = document.getElementById('interactive-chakra');
+
+    if (chakraBox && chakraSvg) {
+      chakraBox.addEventListener('mousemove', (e) => {
+        const rect = chakraBox.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        chakraSvg.style.transform = `perspective(600px) rotateY(${x * 0.18}deg) rotateX(${-y * 0.18}deg) scale(1.05)`;
+      });
+
+      chakraBox.addEventListener('mouseleave', () => {
+        chakraSvg.style.transform = `perspective(600px) rotateY(0deg) rotateX(0deg) scale(1)`;
+      });
+    }
+
+    /* 5. GSAP SCROLL ANIMATIONS */
+    gsap.utils.toArray('.timeline-item').forEach((item) => {
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+        },
+        opacity: 0,
+        x: -30,
+        duration: 0.8,
+        ease: 'power2.out'
+      });
+    });
+
+    const counters = document.querySelectorAll('.counter');
+    counters.forEach(counter => {
+      const target = parseFloat(counter.getAttribute('data-target'));
+      const decimals = parseInt(counter.getAttribute('data-decimals') || 0);
+
+      ScrollTrigger.create({
+        trigger: counter,
+        start: 'top 85%',
+        onEnter: () => {
+          gsap.to(counter, {
+            innerText: target,
+            duration: 2,
+            ease: 'power3.out',
+            snap: { innerText: decimals > 0 ? 0.01 : 1 },
+            onUpdate: function() {
+              counter.innerText = decimals > 0 ? parseFloat(this.targets()[0].innerText).toFixed(decimals) : Math.floor(this.targets()[0].innerText);
+            }
+          });
+        },
+        once: true
+      });
+    });
+
+    /* 6. INTERACTIVE MAP LOGIC WITH JHARKHAND / HAZARIBAGH FOCUS */
+    const stateElements = document.querySelectorAll('.state-interactive');
+    const mapTitle = document.getElementById('map-region-title');
+    const mapTagline = document.getElementById('map-region-tagline');
+    const mapDesc = document.getElementById('map-region-desc');
+    const mapCapital = document.getElementById('map-region-capital');
+    const mapStatus = document.getElementById('map-region-status');
+
+    stateElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        const name = el.getAttribute('data-name');
+        const tagline = el.getAttribute('data-tagline');
+        const desc = el.getAttribute('data-desc');
+        const capital = el.getAttribute('data-capital');
+
+        if (name) {
+          mapTitle.innerText = name;
+          mapTagline.innerText = tagline;
+          mapDesc.innerText = desc;
+          mapCapital.innerText = capital;
+
+          if (name.includes('Jharkhand')) {
+            mapStatus.innerText = 'Jharkhand Special Highlight';
+            mapStatus.className = 'text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-saffron/20 border border-saffron/40 text-saffron-light';
+          } else {
+            mapStatus.innerText = 'State / Region of India';
+            mapStatus.className = 'text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-blue-500/20 border border-blue-500/40 text-blue-300';
+          }
+        }
+      });
+    });
+
+    /* 7. QUOTES CAROUSEL */
+    const quoteSlides = document.querySelectorAll('.quote-slide');
+    const quoteDots = document.querySelectorAll('.quote-dot');
+    let currentQuote = 0;
+
+    function showQuote(index) {
+      quoteSlides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.remove('hidden');
+          slide.style.opacity = '1';
+        } else {
+          slide.classList.add('hidden');
+          slide.style.opacity = '0';
+        }
+      });
+
+      quoteDots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.remove('bg-white/20');
+          dot.classList.add('bg-saffron');
+        } else {
+          dot.classList.remove('bg-saffron');
+          dot.classList.add('bg-white/20');
+        }
+      });
+      currentQuote = index;
+    }
+
+    quoteDots.forEach(dot => {
+      dot.addEventListener('click', (e) => {
+        showQuote(parseInt(e.target.getAttribute('data-index')));
+      });
+    });
+
+    setInterval(() => {
+      let next = (currentQuote + 1) % quoteSlides.length;
+      showQuote(next);
+    }, 5500);
+
+    /* 8. TRICOLOR PARTICLE CANVAS */
+    const canvas = document.getElementById('fluid-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const colors = ['#FF671F', '#FFFFFF', '#046A38', '#3b82f6'];
+
+    function resizeCanvas() {
+      if (!canvas) return;
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class TricolorParticle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 5 + 2;
+        this.speedX = (Math.random() - 0.5) * 3;
+        this.speedY = (Math.random() - 0.5) * 3;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.life = 100;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life -= 1.2;
+        if (this.size > 0.2) this.size -= 0.03;
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = Math.max(this.life / 100, 0);
+        ctx.fillStyle = this.color;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function addParticles(x, y, count = 4) {
+      for (let i = 0; i < count; i++) {
+        particles.push(new TricolorParticle(x, y));
+      }
+    }
+
+    function handlePointer(e) {
+      const rect = canvas.getBoundingClientRect();
+      const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      const y = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+      addParticles(x, y, 6);
+    }
+
+    if (canvas) {
+      canvas.addEventListener('mousemove', handlePointer);
+      canvas.addEventListener('touchmove', handlePointer);
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (Math.random() < 0.2) {
+          addParticles(Math.random() * canvas.width, Math.random() * canvas.height, 1);
+        }
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+          if (particles[i].life <= 0) {
+            particles.splice(i, 1);
+            i--;
+          }
+        }
+        requestAnimationFrame(animateParticles);
+      }
+      animateParticles();
+    }
+
+    /* 9. FREEDOM CARD GENERATOR (AMIT & HAZARIBAGH, JHARKHAND) */
+    const inputName = document.getElementById('user-name');
+    const inputCity = document.getElementById('user-city');
+    const inputMsg = document.getElementById('user-msg');
+
+    const displayName = document.getElementById('card-display-name');
+    const displayCity = document.getElementById('card-display-city');
+    const displayMsg = document.getElementById('card-display-msg');
+
+    const updateBtn = document.getElementById('update-preview-btn');
+    const downloadBtn = document.getElementById('download-card-btn');
+
+    function syncCard() {
+      displayName.innerText = inputName.value.trim() || 'Amit';
+      displayCity.innerText = inputCity.value.trim() || 'Hazaribagh, Jharkhand';
+      displayMsg.innerText = `"${inputMsg.value.trim() || 'Happy 80th Independence Day! Jai Hind!'}"`;
+    }
+
+    inputName.addEventListener('input', syncCard);
+    inputCity.addEventListener('input', syncCard);
+    inputMsg.addEventListener('input', syncCard);
+    updateBtn.addEventListener('click', syncCard);
+
+    // HD Canvas Download Engine
+    downloadBtn.addEventListener('click', () => {
+      const name = inputName.value.trim() || 'Amit';
+      const city = inputCity.value.trim() || 'Hazaribagh, Jharkhand';
+      const message = inputMsg.value.trim() || 'Happy 80th Independence Day! Jai Hind 🇮🇳';
+
+      const exportCanvas = document.createElement('canvas');
+      exportCanvas.width = 1200;
+      exportCanvas.height = 1500;
+      const ctx2 = exportCanvas.getContext('2d');
+
+      // 1. Dark Luxury Background
+      const bgGrad = ctx2.createLinearGradient(0, 0, 1200, 1500);
+      bgGrad.addColorStop(0, '#0e1526');
+      bgGrad.addColorStop(0.5, '#070b14');
+      bgGrad.addColorStop(1, '#020408');
+      ctx2.fillStyle = bgGrad;
+      ctx2.fillRect(0, 0, 1200, 1500);
+
+      // 2. Tricolor Top Bar
+      const triGrad = ctx2.createLinearGradient(0, 0, 1200, 0);
+      triGrad.addColorStop(0, '#FF671F');
+      triGrad.addColorStop(0.5, '#FFFFFF');
+      triGrad.addColorStop(1, '#046A38');
+      ctx2.fillStyle = triGrad;
+      ctx2.fillRect(0, 0, 1200, 24);
+
+      // 3. Border
+      ctx2.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+      ctx2.lineWidth = 4;
+      ctx2.strokeRect(40, 40, 1120, 1420);
+
+      // 4. Header Details
+      ctx2.fillStyle = '#FF9933';
+      ctx2.font = 'bold 26px "Space Grotesk", sans-serif';
+      ctx2.fillText('OFFICIAL COMMEMORATIVE FREEDOM CARD', 80, 120);
+
+      ctx2.fillStyle = '#FFFFFF';
+      ctx2.font = 'bold 52px "Cinzel", serif';
+      ctx2.fillText('INDIA @ 80 🇮🇳', 80, 180);
+
+      ctx2.fillStyle = '#94a3b8';
+      ctx2.font = '26px "Space Grotesk", sans-serif';
+      ctx2.fillText('15 AUGUST 2026', 900, 180);
+
+      // 5. Divider
+      ctx2.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+      ctx2.beginPath();
+      ctx2.moveTo(80, 220);
+      ctx2.lineTo(1120, 220);
+      ctx2.stroke();
+
+      // 6. Watermark Ashoka Chakra
+      ctx2.save();
+      ctx2.translate(600, 750);
+      ctx2.strokeStyle = 'rgba(59, 130, 246, 0.12)';
+      ctx2.lineWidth = 4;
+      ctx2.beginPath();
+      ctx2.arc(0, 0, 260, 0, Math.PI * 2);
+      ctx2.stroke();
+      for (let i = 0; i < 24; i++) {
+        const ang = (i * 360 / 24) * Math.PI / 180;
+        ctx2.beginPath();
+        ctx2.moveTo(0, 0);
+        ctx2.lineTo(260 * Math.cos(ang), 260 * Math.sin(ang));
+        ctx2.stroke();
+      }
+      ctx2.restore();
+
+      // 7. Message Wrapping
+      ctx2.fillStyle = '#FFFFFF';
+      ctx2.font = 'italic 40px "Cinzel", "Plus Jakarta Sans", serif';
+      
+      const maxLineWidth = 980;
+      const words = (`"${message}"`).split(' ');
+      let line = '';
+      let yPos = 580;
+
+      for (let n = 0; n < words.length; n++) {
+        const testLine = line + words[n] + ' ';
+        const metrics = ctx2.measureText(testLine);
+        if (metrics.width > maxLineWidth && n > 0) {
+          ctx2.fillText(line, 100, yPos);
+          line = words[n] + ' ';
+          yPos += 64;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx2.fillText(line, 100, yPos);
+
+      // 8. Footer Section
+      ctx2.beginPath();
+      ctx2.moveTo(80, 1300);
+      ctx2.lineTo(1120, 1300);
+      ctx2.stroke();
+
+      ctx2.fillStyle = '#FFFFFF';
+      ctx2.font = 'bold 38px "Plus Jakarta Sans", sans-serif';
+      ctx2.fillText(name, 100, 1360);
+
+      ctx2.fillStyle = '#FF9933';
+      ctx2.font = 'bold 28px "Space Grotesk", sans-serif';
+      ctx2.fillText(city, 100, 1405);
+
+      ctx2.fillStyle = '#FF9933';
+      ctx2.font = 'bold 44px "Cinzel", serif';
+      ctx2.fillText('वन्दे मातरम् 🇮🇳', 860, 1380);
+
+      // 9. Trigger Download
+      const link = document.createElement('a');
+      link.download = `India80_FreedomCard_${name.replace(/\s+/g, '_')}_${city.replace(/\s+/g, '_')}.png`;
+      link.href = exportCanvas.toDataURL('image/png');
+      link.click();
+    });
+
+    /* 10. FIREWORKS & CONFETTI */
+    const celebrateBtn = document.getElementById('celebrate-btn');
+    function launchTricolorFireworks() {
+      const end = Date.now() + 3.5 * 1000;
+      const colors = ['#FF671F', '#FFFFFF', '#046A38', '#3b82f6'];
+
+      (function frame() {
+        confetti({
+          particleCount: 6,
+          angle: 60,
+          spread: 65,
+          origin: { x: 0 },
+          colors: colors
+        });
+        confetti({
+          particleCount: 6,
+          angle: 120,
+          spread: 65,
+          origin: { x: 1 },
+          colors: colors
+        });
+
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      }());
+    }
+    celebrateBtn.addEventListener('click', launchTricolorFireworks);
+
+    /* 11. WEB AUDIO PATRIOTIC SOUND SYNTH */
+    let audioCtx = null;
+    let isPlaying = false;
+    let synthInterval = null;
+
+    const soundToggle = document.getElementById('sound-toggle');
+    const soundIcon = document.getElementById('sound-icon');
+    const soundText = document.getElementById('sound-text');
+
+    function playTone(freq, duration = 1.2) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+      gain.gain.setValueAtTime(0, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 0.2);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    soundToggle.addEventListener('click', () => {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+
+      if (!isPlaying) {
+        audioCtx.resume();
+        isPlaying = true;
+        soundText.innerText = 'Audio On';
+        soundIcon.setAttribute('data-lucide', 'volume-2');
+        lucide.createIcons();
+
+        const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25];
+        synthInterval = setInterval(() => {
+          const note = notes[Math.floor(Math.random() * notes.length)];
+          playTone(note, 2.5);
+        }, 1200);
+      } else {
+        isPlaying = false;
+        clearInterval(synthInterval);
+        soundText.innerText = 'Audio Off';
+        soundIcon.setAttribute('data-lucide', 'volume-x');
+        lucide.createIcons();
+      }
+    });
+
+    /* 12. MOBILE MENU */
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+      });
+    });
+
+    // Navbar Scroll Background
+    const mainNav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        mainNav.classList.add('bg-luxury-dark/85', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-3');
+        mainNav.classList.remove('py-4');
+      } else {
+        mainNav.classList.remove('bg-luxury-dark/85', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-3');
+        mainNav.classList.add('py-4');
+      }
+    });
+  </script>
+</body>
+</html>
