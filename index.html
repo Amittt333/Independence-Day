@@ -636,9 +636,684 @@
     </div>
   </section>
 
-  <!-- 6. INTERACTIVE INDIA MAP -->
-                    
+  <!-- 
+    <!-- 6. INTERACTIVE INDIA MAP -->
+<section id="map-section"
+    class="py-24 px-6 relative bg-gradient-to-b from-transparent via-[#080d1e]/80 to-transparent">
 
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+            <span class="text-xs font-mono tracking-[0.35em] uppercase text-[#ff9933]">
+                Sovereign Geography
+            </span>
+
+            <h2 class="text-3xl md:text-5xl font-serif font-black text-white mt-3">
+                One Nation. Many Stories.
+            </h2>
+
+            <p class="text-slate-400 mt-4 max-w-2xl mx-auto">
+                Explore the states of India and discover the heritage,
+                capitals and stories that make our nation extraordinary.
+            </p>
+        </div>
+
+        <!-- Map Card -->
+        <div class="glass-card rounded-3xl p-4 md:p-6
+                    flex flex-col lg:flex-row gap-6
+                    border border-white/10 overflow-hidden">
+
+            <!-- INDIA MAP -->
+            <div class="w-full lg:w-2/3">
+
+                <div id="india-map"
+                    class="w-full rounded-2xl overflow-hidden
+                           border border-white/10">
+                </div>
+
+            </div>
+
+            <!-- INFO PANEL -->
+            <div class="w-full lg:w-1/3 flex items-center">
+
+                <div id="map-info"
+                    class="w-full rounded-2xl p-7
+                           bg-gradient-to-br from-[#111827]
+                           to-[#020617]
+                           border border-white/10
+                           shadow-2xl">
+
+                    <div class="text-xs font-mono uppercase
+                                tracking-[0.25em] text-[#ff9933] mb-4">
+                        Selected State
+                    </div>
+
+                    <h3 id="state-name"
+                        class="text-3xl md:text-4xl font-serif
+                               font-black text-white">
+                        Jharkhand
+                    </h3>
+
+                    <div class="mt-5">
+
+                        <span class="text-xs uppercase
+                                     tracking-widest text-slate-500">
+                            Capital
+                        </span>
+
+                        <p id="state-capital"
+                           class="text-xl font-bold text-[#00aaff] mt-1">
+                            Ranchi
+                        </p>
+
+                    </div>
+
+                    <div class="mt-5">
+
+                        <span class="text-xs uppercase
+                                     tracking-widest text-slate-500">
+                            Heritage
+                        </span>
+
+                        <p id="state-tagline"
+                           class="text-slate-300 italic mt-2 leading-relaxed">
+                            Land of Forests, Waterfalls & Tribal Heritage
+                        </p>
+
+                    </div>
+
+                    <div class="mt-7 h-px bg-white/10"></div>
+
+                    <p class="text-xs text-slate-500 mt-5">
+                        Click any state on the map to explore.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- MAP CSS -->
+<style>
+
+#india-map {
+    height: 600px;
+    min-height: 450px;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,153,51,0.08),
+            transparent 60%
+        ),
+        #020617;
+}
+
+/* Highcharts background */
+.highcharts-background {
+    fill: transparent;
+}
+
+/* State borders */
+.highcharts-map-series .highcharts-point {
+    stroke: #ffffff;
+    stroke-width: 0.7px;
+    transition: all 0.25s ease;
+}
+
+/* Hover */
+.highcharts-map-series .highcharts-point:hover {
+    stroke: #ff9933;
+    stroke-width: 2px;
+}
+
+/* Map text */
+.highcharts-title,
+.highcharts-subtitle,
+.highcharts-axis-labels text {
+    fill: #ffffff !important;
+}
+
+/* Hide unnecessary credits */
+.highcharts-credits {
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+
+    #india-map {
+        height: 470px;
+        min-height: 400px;
+    }
+
+}
+
+</style>
+
+
+<!-- INDIA MAP JAVASCRIPT -->
+<script>
+
+(async function () {
+
+    const INDIA_MAP_URL =
+        'https://code.highcharts.com/mapdata/countries/in/in-all.geo.json';
+
+    try {
+
+        /* Load actual India map */
+        const topology = await fetch(INDIA_MAP_URL)
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error("India map failed to load");
+                }
+
+                return response.json();
+
+            });
+
+
+        /*
+         * State information
+         */
+        const stateInfo = {
+
+            "Jharkhand": {
+                capital: "Ranchi",
+                tagline:
+                    "Land of Forests, Waterfalls & Tribal Heritage"
+            },
+
+            "Bihar": {
+                capital: "Patna",
+                tagline:
+                    "Ancient Civilizations & Buddhist Heritage"
+            },
+
+            "West Bengal": {
+                capital: "Kolkata",
+                tagline:
+                    "Culture, Literature & Himalayan Gateway"
+            },
+
+            "Odisha": {
+                capital: "Bhubaneswar",
+                tagline:
+                    "Temples, Art & Coastal Heritage"
+            },
+
+            "Chhattisgarh": {
+                capital: "Raipur",
+                tagline:
+                    "Forests, Waterfalls & Tribal Culture"
+            },
+
+            "Uttar Pradesh": {
+                capital: "Lucknow",
+                tagline:
+                    "Heritage, Spirituality & Ancient Cities"
+            },
+
+            "Madhya Pradesh": {
+                capital: "Bhopal",
+                tagline:
+                    "Heart of India & Rich Wildlife"
+            },
+
+            "Rajasthan": {
+                capital: "Jaipur",
+                tagline:
+                    "Royal Heritage & Desert Landscapes"
+            },
+
+            "Gujarat": {
+                capital: "Gandhinagar",
+                tagline:
+                    "Commerce, Culture & Coastal Heritage"
+            },
+
+            "Maharashtra": {
+                capital: "Mumbai",
+                tagline:
+                    "Financial Powerhouse & Cultural Diversity"
+            },
+
+            "Karnataka": {
+                capital: "Bengaluru",
+                tagline:
+                    "Technology, Temples & Heritage"
+            },
+
+            "Tamil Nadu": {
+                capital: "Chennai",
+                tagline:
+                    "Dravidian Culture & Ancient Temples"
+            },
+
+            "Kerala": {
+                capital: "Thiruvananthapuram",
+                tagline:
+                    "Backwaters, Beaches & Green Landscapes"
+            },
+
+            "Andhra Pradesh": {
+                capital: "Amaravati",
+                tagline:
+                    "Coastal Heritage & Ancient Temples"
+            },
+
+            "Telangana": {
+                capital: "Hyderabad",
+                tagline:
+                    "Technology, History & Deccan Culture"
+            },
+
+            "Assam": {
+                capital: "Dispur",
+                tagline:
+                    "Tea Gardens, Wildlife & Brahmaputra"
+            },
+
+            "Arunachal Pradesh": {
+                capital: "Itanagar",
+                tagline:
+                    "Eastern Himalayas & Natural Beauty"
+            },
+
+            "Sikkim": {
+                capital: "Gangtok",
+                tagline:
+                    "Himalayan Beauty & Buddhist Heritage"
+            },
+
+            "Meghalaya": {
+                capital: "Shillong",
+                tagline:
+                    "Clouds, Waterfalls & Living Root Bridges"
+            },
+
+            "Nagaland": {
+                capital: "Kohima",
+                tagline:
+                    "Tribal Heritage & Mountain Culture"
+            },
+
+            "Manipur": {
+                capital: "Imphal",
+                tagline:
+                    "Valleys, Lakes & Cultural Heritage"
+            },
+
+            "Mizoram": {
+                capital: "Aizawl",
+                tagline:
+                    "Hills, Forests & Vibrant Communities"
+            },
+
+            "Tripura": {
+                capital: "Agartala",
+                tagline:
+                    "Palaces, Hills & Cultural Heritage"
+            },
+
+            "Punjab": {
+                capital: "Chandigarh",
+                tagline:
+                    "Golden Fields & Sikh Heritage"
+            },
+
+            "Haryana": {
+                capital: "Chandigarh",
+                tagline:
+                    "Agriculture, Industry & Ancient Heritage"
+            },
+
+            "Himachal Pradesh": {
+                capital: "Shimla",
+                tagline:
+                    "Himalayan Valleys & Snow Mountains"
+            },
+
+            "Uttarakhand": {
+                capital: "Dehradun",
+                tagline:
+                    "Himalayas, Rivers & Spiritual Heritage"
+            },
+
+            "Goa": {
+                capital: "Panaji",
+                tagline:
+                    "Beaches, Portuguese Heritage & Coastal Life"
+            }
+        };
+
+
+        /*
+         * Create map
+         */
+        Highcharts.mapChart('india-map', {
+
+            chart: {
+
+                map: topology,
+
+                backgroundColor: 'transparent',
+
+                spacing: [10, 10, 10, 10]
+
+            },
+
+
+            title: {
+                text: ''
+            },
+
+
+            credits: {
+                enabled: false
+            },
+
+
+            accessibility: {
+                enabled: false
+            },
+
+
+            mapNavigation: {
+
+                enabled: true,
+
+                buttonOptions: {
+
+                    verticalAlign: 'bottom',
+
+                    theme: {
+
+                        fill: '#111827',
+
+                        stroke: '#ffffff',
+
+                        'stroke-width': 1,
+
+                        style: {
+                            color: '#ffffff'
+                        },
+
+                        states: {
+
+                            hover: {
+                                fill: '#ff9933'
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            },
+
+
+            tooltip: {
+
+                useHTML: true,
+
+                backgroundColor: '#020617',
+
+                borderColor: '#ff9933',
+
+                borderRadius: 10,
+
+                style: {
+                    color: '#ffffff'
+                },
+
+                formatter: function () {
+
+                    return `
+                        <div style="padding:5px">
+                            <strong style="color:#ff9933;font-size:15px">
+                                ${this.point.name}
+                            </strong>
+                        </div>
+                    `;
+
+                }
+
+            },
+
+
+            series: [{
+
+                type: 'map',
+
+                mapData: topology,
+
+                name: 'India',
+
+                joinBy: null,
+
+                data: [],
+
+                nullColor: '#243047',
+
+                borderColor: '#ffffff',
+
+                borderWidth: 0.8,
+
+                states: {
+
+                    hover: {
+
+                        color: '#ff9933',
+
+                        borderColor: '#ffffff',
+
+                        borderWidth: 1.5
+
+                    }
+
+                }
+
+            }]
+
+        }, function (chart) {
+
+
+            /*
+             * Find Jharkhand
+             */
+            const points =
+                chart.series[0].points;
+
+            let jharkhandPoint = null;
+
+            points.forEach(point => {
+
+                const name =
+                    String(point.name || '').toLowerCase();
+
+                if (
+                    name.includes('jharkhand')
+                ) {
+
+                    jharkhandPoint = point;
+
+                }
+
+            });
+
+
+            /*
+             * Highlight Jharkhand
+             */
+            if (jharkhandPoint) {
+
+                jharkhandPoint.update({
+
+                    color: '#138808',
+
+                    borderColor: '#ff9933',
+
+                    borderWidth: 2
+
+                }, false);
+
+
+                /*
+                 * Open Jharkhand information
+                 */
+                showStateInfo('Jharkhand');
+
+                chart.redraw();
+
+            }
+
+
+            /*
+             * Click on states
+             */
+            chart.series[0].points.forEach(point => {
+
+                point.on('click', function () {
+
+                    const stateName =
+                        this.name;
+
+                    showStateInfo(stateName);
+
+
+                    /*
+                     * Reset all states
+                     */
+                    chart.series[0].points.forEach(p => {
+
+                        if (p !== this) {
+
+                            p.update({
+
+                                color: '#243047',
+
+                                borderColor: '#ffffff',
+
+                                borderWidth: 0.8
+
+                            }, false);
+
+                        }
+
+                    });
+
+
+                    /*
+                     * Highlight selected state
+                     */
+                    this.update({
+
+                        color: '#138808',
+
+                        borderColor: '#ff9933',
+
+                        borderWidth: 2
+
+                    }, true);
+
+                });
+
+            });
+
+        });
+
+
+        /*
+         * State information function
+         */
+        function showStateInfo(stateName) {
+
+            const nameElement =
+                document.getElementById('state-name');
+
+            const capitalElement =
+                document.getElementById('state-capital');
+
+            const taglineElement =
+                document.getElementById('state-tagline');
+
+
+            const info =
+                stateInfo[stateName];
+
+
+            nameElement.textContent =
+                stateName || 'India';
+
+
+            if (info) {
+
+                capitalElement.textContent =
+                    info.capital;
+
+                taglineElement.textContent =
+                    info.tagline;
+
+            } else {
+
+                capitalElement.textContent =
+                    'State Capital';
+
+                taglineElement.textContent =
+                    'Explore the heritage and culture of this region.';
+
+            }
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(
+            'India Map Error:',
+            error
+        );
+
+
+        document.getElementById(
+            'india-map'
+        ).innerHTML = `
+
+            <div style="
+                height:100%;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                color:#ff9933;
+                font-family:monospace;
+                text-align:center;
+                padding:30px;
+            ">
+
+                India map could not be loaded.<br>
+                Please check your internet connection.
+
+            </div>
+
+        `;
+
+    }
+
+})();
+
+  </script>                
+<!-- Highcharts Maps -->
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+ 
   <!-- 7. PATRIOTIC QUOTES SECTION -->
   <section class="py-24 px-6 relative">
     <div class="max-w-4xl mx-auto text-center">
